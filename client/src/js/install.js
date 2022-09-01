@@ -1,5 +1,3 @@
-const e = require("express");
-
 const butInstall = document.getElementById('buttonInstall');
 
 // Logic for installing the PWA
