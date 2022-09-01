@@ -21,25 +21,25 @@ export const putDb = async (content) => {
   //uses the transaction to open up the jate store
   const store = trx.objectStore('jate')
   //adds/posts the content to the db from the user's input
-  const req = store.add({content: content})
+  const request = store.put({content: content})
   //confirms the request to post
-  const res = await req
-  console.log('Data saved to the db', res)
+  const result = await request
+  console.log('Data saved to the db', result)
 };
 
 // TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
   const jateDb = await openDB('jate', 1)
 
-  const tx = jateDb.transaction('jate', 'readonly')
+  const trx = jateDb.transaction('jate', 'readonly')
 
-  const store = tx.objectStore('jate')
+  const store = trx.objectStore('jate')
 
-  const req = store.getAll()
+  const request = store.getAll()
 
-  const res = await req
+  const result = await request
 
-  return res
+  return result
 };
 
 initdb();
